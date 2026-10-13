@@ -1,0 +1,25 @@
+
+name: Two Jobs Workflow
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  
+
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: First Step
+        run: echo "First job is running"
+
+  job2:
+    name: Second Job
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Second Step
+        run: echo "Second job is running"
